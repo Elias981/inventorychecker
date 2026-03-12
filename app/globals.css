@@ -1,11 +1,13 @@
-@import "tailwindcss";
+@import "tailwindcss"; /**load Tailwind in version 4**/
 
-:root {
+:root {   /**standard CSS variables. By defining them in :root,
+   you make them available anywhere in your project.**/
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
+@theme inline {  /**The @theme directive tells Tailwind: 
+  "I want you to create new utility classes based on these variables. see note at the end"**/
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -13,14 +15,40 @@
 }
 
 @media (prefers-color-scheme: dark) {
+  /**This uses a native CSS media query to detect if the user's 
+  operating system is in Dark Mode. 
+  If it is, it re-defines the --background and --foreground variables.**/
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
 
-body {
+body { /**This is a standard CSS rule that applies to the body element**/
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+/**
+Namespacing: Because the variable starts with --color-, 
+Tailwind automatically creates utilities like bg-background, text-background,
+ and border-background.
+
+Mapping: It links Tailwind's background utility to your custom --background CSS variable.
+
+The inline keyword: This tells Tailwind to keep these theme variables
+ in the output CSS exactly where you wrote them, rather than moving them into a separate layer.
+
+
+ 1. Default Behavior (Without inline)
+Normally, when you use @theme, Tailwind takes all those variables and "hoists" them. 
+It moves them into a internal layer and often wraps them in a specific selector 
+(like .theme or :root).
+
+2. Why use inline?
+When you add inline, you are telling Tailwind: "Don't move these. 
+Leave them exactly where I wrote them in this file."
+**/
