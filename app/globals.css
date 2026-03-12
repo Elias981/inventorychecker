@@ -2,16 +2,45 @@
 
 :root {   /**standard CSS variables. By defining them in :root,
    you make them available anywhere in your project.**/
-  --background: #ffffff;
-  --foreground: #171717;
+/* --- 1. CORE PALETTE (The Values) --- */
+  /* Using a Soft Cream background and a Muted Lavender primary */
+  --background: #F8F9FA;    /* Very light off-white/grey */
+  --foreground: #4A4E69;    /* Dark slate-purple for text */
+  --surface: #FFFFFF;       /* Pure white for cards */
+  --border: #E2E8F0;        /* Subtle divider color */
+  
+  --primary: #9B8DEC;       /* Cute Lavender (The "Action" color) */
+  --secondary: #DDE1EE;     /* Soft Blue-Grey */
+  --accent: #9DF0B3;        /* Fresh Mint (The "Cute" pop) */
+  
+  /* --- 2. STATUS COLORS --- */
+  --success: #82E19D;
+  --error: #FB7D8D;         /* Soft coral-red instead of harsh red */
+  --warning: #FFE16F;
+  --info: #92BCEB;
+  --destructive: #E96F4E;   /* Muted Terracotta */
+  
+  --muted: #94A3B8;         /* Grey for captions */
 }
 
 @theme inline {  /**The @theme directive tells Tailwind: 
   "I want you to create new utility classes based on these variables. see note at the end"**/
+/* --- 3. THEME MAPPING (The Utilities) --- */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+  --color-destructive: var(--destructive);
+  --color-muted: var(--muted);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +48,11 @@
   operating system is in Dark Mode. 
   If it is, it re-defines the --background and --foreground variables.**/
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1B1B2F;
+    --foreground: #E2E8F0;
+    --surface: #242442;
+    --border: #3F3F5F;
+    --primary: #B7ADF3;     /* Brighter lavender for dark mode */
   }
 }
 
